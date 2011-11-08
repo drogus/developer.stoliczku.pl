@@ -118,10 +118,44 @@ module Stoliczku
       ]
     }
 
-    ERROR = {:message => "per_page should not be greater than 100"}
-
     RESTAURANT_WITH_AVAILABILITY = RESTAURANT.merge(AVAILABILITY)
 
+    PAST = {:message => 'selected_time_is_in_the_past'}
+
+    NO_SEATS_AVAILABLE = {:message => 'no_seats_available'}
+
+    TOO_FAR = {:message => 'search_date_is_too_far_in_future'}
+
+    BEFORE_ADVANCE = {:message => 'hour_is_before_advance', :from => "16:00"}
+
+    RESERVATIONS_NOT_ACCEPTED = {:message => 'reservations_not_accepted'}
+
+    REGISTERED_USER = {
+      "first_name" => "Jan",
+      "last_name" => "Kowalski",
+      "phone" => "344-555-111",
+      "email" => "jan.kowalski@example.org",
+      "city" => "Warszawa",
+      "birth_date" => "1980-12-12"
+    }
+
+    REGISTRATION_VALIDATION_ERROR = {
+      "message" => "Błąd walidacji",
+      "errors" => [
+        {
+          "field" => "password",
+          "code"  => "wprowadzone hasło i jego powtórzenie różnią się"
+        },
+        {
+          "field" => "city",
+          "code"  => "nie może być puste"
+        }
+      ]
+    }
+
+    TOKEN_IS_BLANK = {"message" => 'activation_token_is_blank'}
+    TOKEN_NOT_FOUND = {"message" => 'activation_token_not_found'}
+    TOKEN_USED = {"message" => 'activation_token_already_used'}
   end
 end
 

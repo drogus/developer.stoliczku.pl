@@ -38,6 +38,4 @@ Możliwe wartości `rel`:
 
 ## Błędy
 
-Jeśli żądanie zwróciło kod błędu 422 odpowiedź będzie zawierała opis błędu:
-
-<%= headers 422 %> <%= json(:error) %>
+Jeśli żądanie zwróciło kod błędu 422 odpowiedź będzie zawierała opis błędu. Wszystkie błędy są opisane przy opisach zapytań.
