@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Stoliczku.pl API - Restauracje</title>
+  <title>Stoliczku.pl API - Rejestracja użytkowników</title>
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/960.css" rel="stylesheet" type="text/css" />
   <link href="/css/uv_active4d.css" rel="stylesheet" type="text/css" />
@@ -29,15 +29,57 @@
 
     <div id="wrapper">
       <div class="content">
-    <h2 id="restauracje">Restauracje</h2>
+    <h2 id="rejestracja-uytkownikw">Rejestracja użytkowników</h2>
 
-<ul class="js-guides">
-<li><a href="/restaurants/display">Wyświetlanie</a></li>
-</ul><ul class="js-guides">
-<li><a href="/restaurants/availability">Dostępność</a></li>
-</ul><ul class="js-guides">
-<li><a href="/restaurants/search">Wyszukiwanie</a></li>
-</ul>
+<pre><code>POST /activations
+</code></pre>
+
+<h3 id="parametry">Parametry</h3>
+<dl>
+<dt>activation_token</dt>
+  <dd>
+    <ul>
+<li>kod aktywacyjny, który użytkownik dostanie w smsie</li>
+    </ul>
+</dd>
+</dl><h3 id="odpowied">Odpowiedź</h3>
+<p>Poprawne zapytanie zwróci aktywowanego użytkownika:</p>
+
+<pre class="headers"><code>Status: 200 OK</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "first_name": "Jan",
+  "last_name": "Kowalski",
+  "phone": "344-555-111",
+  "email": "jan.kowalski@example.org",
+  "city": "Warszawa",
+  "birth_date": "1980-12-12"
+}</code></pre>
+<p>”</p>
+
+<h3 id="bdy-walidacji">Błędy walidacji</h3>
+<p>Kod aktywacyjny nie został podany:</p>
+
+<pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "message": "activation_token_is_blank"
+}</code></pre>
+<p>”</p>
+
+<p>Kod aktywacyjny jest nieprawidłowy:</p>
+
+<pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "message": "activation_token_not_found"
+}</code></pre>
+<p>”</p>
+
+<p>Kod aktywacyjny jest już zużyty:</p>
+
+<pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "message": "activation_token_already_used"
+}</code></pre>
+<p>”</p>
       </div>
 
     <div id="js-sidebar" class="sidebar-shell">

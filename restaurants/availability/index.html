@@ -19,7 +19,7 @@
     <div id="header-wrapper">
       <div id="header">
         <div>
-          <a class="logo" href="/"><img src="/images/logo_developer.png" width="255" height="45" /></a>
+          <h1><a class="logo" href="/">Stoliczku.pl</a></h1>
           <ul class="nav">
             <li><a href="http://stoliczku.pl">Stoliczku.pl</a></li>
           </ul>
@@ -52,9 +52,12 @@
   <dd>
     <ul>
 <li>godzina w formacie GG-MM</li>
-      <li>należy podać godzinę późniejszą niż obecna o wartość sekund w polu <code>advance_time</code> restauracji</li>
+      <li>Rezerwacja może być złożona z wyprzedzeniem równym co najmniej ilości sekund w polu advane_time restauracji.</li>
     </ul>
-</dd>
+<p>Przykład:</p>
+
+    <p>Dla wartości advance_time = 3600 (60 minut) o godzinie 14:00 danego dnia, najbliższa rezerwacja może być w tym dniu złożona o godzinie 15:00.</p>
+  </dd>
   <dt>:seats</dt>
   <dd>
     <ul>
@@ -89,6 +92,49 @@
   ]
 }</code></pre>
 <p>”</p>
+
+<h3 id="komunikaty-bdw">Komunikaty błędów:</h3>
+
+<p>Podana data jest w przeszłości:</p>
+
+<pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "message": "selected_time_is_in_the_past"
+}</code></pre>
+<p>”</p>
+
+<p>Brak miejsc w restauracji:</p>
+
+<pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "message": "no_seats_available"
+}</code></pre>
+<p>”</p>
+
+<p>Podana data jest za daleko w przyszłości:</p>
+
+<pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "message": "search_date_is_too_far_in_future"
+}</code></pre>
+<p>”</p>
+
+<p>Podana godzina jest zbyt wczesna. Klucz <code>from</code> zwraca najwcześniejszą możliwą godzinę rezerwacji:</p>
+
+<pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "message": "hour_is_before_advance",
+  "from": "16:00"
+}</code></pre>
+<p>”</p>
+
+<p>Rezerwacja nie może być wykonana:</p>
+
+<pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "message": "reservations_not_accepted"
+}</code></pre>
+<p>”</p>
       </div>
 
     <div id="js-sidebar" class="sidebar-shell">
@@ -96,6 +142,15 @@
         <ul>
           <li class="js-topic">
             <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/">Ogólne</a></h3>
+          </li>
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/">Użytkownicy</a></h3>
+            <ul class="js-guides">
+              <li><a href="/users/registration">Rejestracja</a></li>
+            </ul>
+            <ul class="js-guides">
+              <li><a href="/users/activation">Aktywacja</a></li>
+            </ul>
           </li>
           <li class="js-topic">
             <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/restaurants">Restauracje</a></h3>

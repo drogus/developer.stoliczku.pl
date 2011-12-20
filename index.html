@@ -19,7 +19,7 @@
     <div id="header-wrapper">
       <div id="header">
         <div>
-          <a class="logo" href="/"><img src="/images/logo_developer.png" width="255" height="45" /></a>
+          <h1><a class="logo" href="/">Stoliczku.pl</a></h1>
           <ul class="nav">
             <li><a href="http://stoliczku.pl">Stoliczku.pl</a></li>
           </ul>
@@ -63,13 +63,7 @@ $ curl http://api.stoliczku.pl/restaurants?page=2&amp;per_page=50
   <dd>Pokazuje URL do poprzedniej strony wyników.</dd>
 </dl><h2 id="bdy">Błędy</h2>
 
-<p>Jeśli żądanie zwróciło kod błędu 422 odpowiedź będzie zawierała opis błędu:</p>
-
-<pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
-<pre class="highlight"><code class="llanguage-javascript">{
-  "message": "per_page should not be greater than 100"
-}</code></pre>
-<p>”</p>
+<p>Jeśli żądanie zwróciło kod błędu 422 odpowiedź będzie zawierała opis błędu. Wszystkie błędy są opisane przy opisach zapytań.</p>
       </div>
 
     <div id="js-sidebar" class="sidebar-shell">
@@ -77,6 +71,15 @@ $ curl http://api.stoliczku.pl/restaurants?page=2&amp;per_page=50
         <ul>
           <li class="js-topic">
             <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/">Ogólne</a></h3>
+          </li>
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/">Użytkownicy</a></h3>
+            <ul class="js-guides">
+              <li><a href="/users/registration">Rejestracja</a></li>
+            </ul>
+            <ul class="js-guides">
+              <li><a href="/users/activation">Aktywacja</a></li>
+            </ul>
           </li>
           <li class="js-topic">
             <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/restaurants">Restauracje</a></h3>
