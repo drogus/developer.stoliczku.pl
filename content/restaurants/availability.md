@@ -4,7 +4,7 @@ title: Stoliczku.pl API - Sprawdzanie dostępności restauracji
 
 ## Sprawdzanie dostępności restauracji
 
-    GET /restaurants/:id/availability/:from/:seats
+    GET /restaurants/:id/availability/:date/:hour/:seats
 
 :id
 : * numer id restauracji
