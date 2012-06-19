@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Stoliczku.pl API</title>
+  <title>Stoliczku.pl API - Rezerwacje</title>
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/960.css" rel="stylesheet" type="text/css" />
   <link href="/css/uv_active4d.css" rel="stylesheet" type="text/css" />
@@ -29,16 +29,69 @@
 
     <div id="wrapper">
       <div class="content">
-    <h1 id="stoliczkupl-api">Stoliczku.pl API</h1>
+    <h2 id="stworzenie-nowej-rezerwacji">Stworzenie nowej rezerwacji</h2>
 
-<p>Poniższy dokument opisuje API dla developerów.</p>
+<pre><code>POST /reservations
+</code></pre>
 
-<ul>
-<li>Wyświetlenie listy restauracji</li>
-  <li>Wyświetlenie pojedyńczej restaurauracji</li>
-  <li>Wyszukiwanie restauracji</li>
-  <li>Sprawdzanie dostępności</li>
-</ul>
+<h3 id="parametry">Parametry</h3>
+
+<dl>
+<dt>seats</dt>
+  <dd>
+    <ul>
+<li>ilość miejsc do rezerwacji</li>
+    </ul>
+</dd>
+  <dt>date</dt>
+  <dd>
+    <ul>
+<li>data w formacie yyyy-mm-dd</li>
+    </ul>
+</dd>
+  <dt>hour</dt>
+  <dd>
+    <ul>
+<li>godzina rezerwacji</li>
+    </ul>
+</dd>
+  <dt>notes</dt>
+  <dd>
+    <ul>
+<li>informacja do przekazania do restauracji</li>
+    </ul>
+</dd>
+  <dt>restaurant_id</dt>
+  <dd>
+    <ul>
+<li>id restauracji, w której powinna zostać złożona rezerwacja</li>
+    </ul>
+</dd>
+</dl><h3 id="przykadowe-parametry">Przykładowe parametry</h3>
+
+<pre><code>{
+  "seats": 2,
+  "date": "2012-02-20",
+  "hour": "15:30",
+  "notes": "Poprosze o stolik przy oknie",
+  "restaurant_id": 118
+}
+</code></pre>
+
+<h3 id="odpowied">Odpowiedź</h3>
+
+<p>Poprawne zapytanie zwróci dane rezerwacji:</p>
+
+<pre class="headers"><code>Status: 200 OK</code></pre>
+<pre class="highlight"><code class="llanguage-javascript">{
+  "id": 18,
+  "notes": "Poprosze o stolik przy oknie",
+  "restaurant_id": 118,
+  "seats": 2,
+  "date": "2012-02-20",
+  "hour": "15:30"
+}</code></pre>
+<p>”</p>
       </div>
 
     <div id="js-sidebar" class="sidebar-shell">
